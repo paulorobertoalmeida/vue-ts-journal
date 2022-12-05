@@ -4,7 +4,7 @@ import EntryEditor from "./components/EntryEditor.vue";
 import EntryCard from "@/components/EntryCard.vue";
 import { ref, reactive } from "vue";
 
-import User from "./types/User"
+import type User from "./types/User";
 
 
 const user: User = reactive({
