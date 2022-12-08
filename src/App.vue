@@ -22,7 +22,7 @@ console.log(user.setting);
   <span class="text-black">{{user.id}}</span>
   <main class="container p-10 m-auto">
     <TheHeader />
-    <EntryEditor />
+    <EntryEditor @create/>
     <ul>
       <li>
         <EntryCard />
