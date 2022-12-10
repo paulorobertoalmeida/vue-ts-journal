@@ -47,7 +47,7 @@ const handleSubmit = () => {
     <textarea
       :value="text"
       @keyup="handleTextInput"
-      placeholder="New Journal Entry for pauloalmeida.eth"
+      placeholder="New Journal Entry"
     ></textarea>
     <EmojiField v-model="emoji" />
     <div class="entry-form-footer">
