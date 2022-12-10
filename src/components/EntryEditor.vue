@@ -10,10 +10,12 @@ const charCount = computed<number>(() => text.value.length);
 const text = ref("");
 const emoji = ref<Emoji | null>(null);
 const maxChar: number = 280;
+
 //emits
-defineEmits<{
+const emit = defineEmits<{
   (e: "@create", entry: Entry): void;
 }>();
+
 //methods
 const handleTextInput = (e: Event) => {
   const textArea = e.target as HTMLTextAreaElement;
@@ -24,19 +26,23 @@ const handleTextInput = (e: Event) => {
     text.value = textArea.value = textArea.value.substring(0, maxChar);
   }
 };
+
+const handleSubmit = () => {
+  emit('@create', {
+        body: text.value,
+        emoji: emoji.value,
+        createdAt: new Date(),
+        userId: 1,
+        id: Math.random(),
+      });
+      text.value = "";
+      emoji.value = null;
+}
 </script>
 <template>
   <form
     class="entry-form"
-    @submit.prevent="
-      $emit('@create', {
-        body: text,
-        emoji,
-        createdAt: new Date(),
-        userId: 1,
-        id: Math.random(),
-      })
-    "
+    @submit.prevent="handleSubmit"
   >
     <textarea
       :value="text"

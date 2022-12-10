@@ -5,12 +5,11 @@ import EntryCard from "@/components/EntryCard.vue";
 import { ref, reactive } from "vue";
 
 import type User from "./types/User";
-import type Emoji from "./types/Emoji";
+// import type Emoji from "./types/Emoji";
+import type Entry from "./types/Entry";
 
-defineEmits<{
-  (e: "@create", entry: { text: string; emoji: Emoji | null }): void;
-}>();
 
+const entries: Entry[] = reactive([]); // Each type inside the array will be an "entries"
 const user: User = reactive({
   id: 1,
   username: "pauloalmeida.eth",
@@ -21,7 +20,8 @@ const user: User = reactive({
 console.log(user.id);
 console.log(user.setting);
 
-const handleCreateEntry = (entry: { text: string; emoji: Emoji | null }) => {
+const handleCreateEntry = (entry: Entry) => {
+  entries.unshift(entry);
   console.log(entry);
 };
 
@@ -33,7 +33,7 @@ const handleCreateEntry = (entry: { text: string; emoji: Emoji | null }) => {
     <TheHeader />
     <EntryEditor @@create="handleCreateEntry" />
     <ul>
-      <li>
+      <li v-for="entry in entries" :key="entry.id">
         <EntryCard />
       </li>
     </ul>
