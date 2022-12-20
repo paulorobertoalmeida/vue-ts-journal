@@ -3,7 +3,6 @@ import TheHeader from "@/components/TheHeader.vue";
 import EntryEditor from "./components/EntryEditor.vue";
 import EntryCard from "@/components/EntryCard.vue";
 import { reactive, provide, inject } from "vue";
-import { InjectionKey } from "vue";
 import { userInjectionKey }  from "@/types/injectionKey";
 // import type User from "./types/User";
 

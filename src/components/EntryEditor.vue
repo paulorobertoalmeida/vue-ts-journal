@@ -11,6 +11,7 @@ const text = ref("");
 const emoji = ref<Emoji | null>(null);
 const maxChar: number = 280;
 
+
 //template refs
 const textArea = ref<HTMLTextAreaElement | null>(null);
 onMounted(() =>{
